@@ -5,7 +5,7 @@
 .title {
   font-family: 'Playfair Display', serif;
   font-size: 36px;
-  text-transform: capitalize; /* 첫 글자 대문자 */
+  text-transform: capitalize;
   margin-bottom: 30px;
   border-bottom: 2px solid #000;
   padding-bottom: 10px;
@@ -13,7 +13,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* 반응형 그리드 */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 30px;
 }
 
@@ -23,7 +23,6 @@
   border-bottom: 1px solid #eee;
   padding-bottom: 20px;
   
-  /* 이미지 래퍼 */
   .imageWrapper {
     width: 100%;
     height: 180px;
@@ -40,7 +39,7 @@
   }
 
   &:hover .imageWrapper img {
-    transform: scale(1.05); /* 마우스 올리면 이미지 살짝 확대 */
+    transform: scale(1.05);
   }
 
   .date {
@@ -69,7 +68,7 @@
     color: #555;
     line-height: 1.6;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* 3줄까지만 표시 */
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

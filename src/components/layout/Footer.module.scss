@@ -1,12 +1,11 @@
 .footerContainer {
-  background-color: #333; /* 짙은 검은색 배경 */
+  background-color: #333;
   color: #fff;
   padding: 40px 60px;
-  margin-top: 60px; /* 본문과 간격 띄우기 */
+  margin-top: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .logo {
@@ -42,7 +41,7 @@
       display: flex;
       gap: 15px;
       margin-bottom: 10px;
-      flex-wrap: wrap; /* 모바일에서 줄바꿈 */
+      flex-wrap: wrap;
       justify-content: center;
     
       a {

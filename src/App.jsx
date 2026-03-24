@@ -1,13 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.scss'; // 전역 스타일 import
+import './App.scss';
 
 // 컴포넌트 import
 import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
 import CategoryPage from './pages/CategoryPage';
 import SearchPage from './pages/SearchPage';
-import Footer from './components/layout/Footer';
+import ArticlePage from './pages/ArticlePage'; // 👈 새 페이지 추가
 
 function App() {
   return (
@@ -19,9 +20,10 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/category/:category" element={<CategoryPage />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/article" element={<ArticlePage />} /> {/* 👈 경로 추가 */}
         </Routes>
-        <Footer />
       </div>
+      <Footer />
     </Router>
   );
 }

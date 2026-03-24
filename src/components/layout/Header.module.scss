@@ -1,4 +1,3 @@
-/* 변수 설정 (색상 등을 변수로 관리하면 편해요) */
 $font-headline: 'Playfair Display', serif;
 $font-body: 'Source Sans 3', sans-serif;
 $color-black: #111;
@@ -26,6 +25,11 @@ $color-gray: #ddd;
     text-decoration: none;
     color: inherit;
   }
+
+  @media (max-width: 768px) {
+    font-size: 36px;
+    margin: 10px 0 15px 0;
+  }
 }
 
 .nav {
@@ -36,6 +40,11 @@ $color-gray: #ddd;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
 
 .menuList {
@@ -43,7 +52,13 @@ $color-gray: #ddd;
   gap: 25px;
   list-style: none;
   margin: 0;
-  padding: 0 20px;
+  padding: 0;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
 }
 
 .menuItem {
@@ -67,9 +82,7 @@ $color-gray: #ddd;
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 0 20px;
 
-  /* SCSS 중첩 기능 활용 */
   svg {
     cursor: pointer;
     font-size: 1.2rem;
@@ -81,9 +94,8 @@ $color-gray: #ddd;
 
 .searchInput {
   padding: 5px;
-  border: none;
-  border-bottom: 1px solid #ccc;
-
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: 14px;
   outline: none;
 }

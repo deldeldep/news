@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getTopHeadlines } from '../services/api'; // API 함수
+import { useParams, Link } from 'react-router-dom'; // 👈 Link 추가
+import { getTopHeadlines } from '../services/api';
 import styles from './CategoryPage.module.scss';
 
 const CategoryPage = () => {
-  // URL에서 category 파라미터 추출 (예: 'technology')
   const { category } = useParams();
   
   const [articles, setArticles] = useState([]);
@@ -14,9 +13,10 @@ const CategoryPage = () => {
     const fetchCategoryNews = async () => {
       setLoading(true);
       try {
-        // API 호출: 한국 뉴스 + 해당 카테고리
-        const data = await getTopHeadlines('us', category);
-        setArticles(data);
+        const data = await getTopHeadlines('us', category); // 미국 뉴스 + 해당 카테고리
+        // 유효한 기사만 필터링 (제목이 없는 데이터 등 제외)
+        const validData = data.filter(article => article.title && article.title !== '[Removed]');
+        setArticles(validData);
       } catch (error) {
         console.error("카테고리 뉴스 로딩 실패:", error);
       } finally {
@@ -24,7 +24,6 @@ const CategoryPage = () => {
       }
     };
 
-    // 카테고리가 바뀔 때마다 실행
     fetchCategoryNews();
   }, [category]);
 
@@ -37,10 +36,12 @@ const CategoryPage = () => {
       <div className={styles.grid}>
         {articles.map((article, index) => (
           <article key={index} className={styles.card}>
-            {/* 이미지 영역 */}
+            {/* 이미지 영역 (클릭 시 상세 페이지 이동) */}
             <div className={styles.imageWrapper}>
               {article.urlToImage && (
-                <img src={article.urlToImage} alt={article.title} />
+                <Link to="/article" state={{ article: article }} style={{ display: 'block', height: '100%' }}>
+                  <img src={article.urlToImage} alt={article.title} />
+                </Link>
               )}
             </div>
 
@@ -50,9 +51,10 @@ const CategoryPage = () => {
             </div>
             
             <h3>
-              <a href={article.url} target="_blank" rel="noopener noreferrer">
+              {/* 제목 (클릭 시 상세 페이지 이동) */}
+              <Link to="/article" state={{ article: article }}>
                 {article.title}
-              </a>
+              </Link>
             </h3>
             
             <p>{article.description}</p>

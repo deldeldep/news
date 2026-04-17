@@ -37,7 +37,7 @@ const ArticlePage = () => {
       )}
 
       <div className={styles.content}>
-        {/* NewsAPI의 무료 버전 특성상 본문 전체(content) 대신 요약본(description)이 올 수 있습니다. */}
+        {/* NewsAPI의 무료 버전 특성상 요약본(description)이 올 수 있습니다. */}
         <p>{article.content || article.description || "기사의 상세 내용은 제공되지 않습니다. 원문을 확인해 주세요."}</p>
       </div>
 
